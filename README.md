@@ -1,3 +1,3 @@
 # Covid_API
-Dashboard yang menampilkan data pertumbuhan kasus corona di negara Jerman dengan menggunakan API dari http://api.kawalcorona.com/
-![Data Covid German](https://user-images.githubusercontent.com/48679768/95147176-329e4500-07aa-11eb-92aa-c67a7e7581d3.png)
+Dashboard yang menampilkan data pertumbuhan kasus corona di negara Jerman dengan menggunakan API dari http://api.kawalcorona.com/ dan https://api.covid19api.com/ 
+![Tugas EAI](https://user-images.githubusercontent.com/48679768/95187823-cf3a0480-07f5-11eb-9cdd-e77659e3b54c.png)
