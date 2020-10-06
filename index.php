@@ -1,4 +1,8 @@
 <?php
+
+$url = file_get_contents('https://api.covid19api.com/country/germany');
+$covid = json_decode($url, true);
+
 $data = file_get_contents('https://api.kawalcorona.com/');
 $country = json_decode($data, true);
 
@@ -19,6 +23,47 @@ $sehat = $row['Active'];
 <!DOCTYPE html>
 <html>
 <head>
+<script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	exportEnabled: true,
+	theme: "light1", // "light1", "light2", "dark1", "dark2"
+	title:{
+		text: "Diagram Perkembangan Positif Covid"
+	},
+  	axisY: {
+      includeZero: true
+    },
+	data: [{
+		type: "column", //change type to bar, line, area, pie, etc
+		//indexLabel: "{y}", //Shows y value on all Data Points
+		indexLabelFontColor: "#5A5757",
+      	indexLabelFontSize: 16,
+		indexLabelPlacement: "outside",
+		dataPoints: [
+			{ x: 1, y: <?= $covid[245]['Confirmed'] ?> },
+			{ x: 2, y: <?= $covid[246]['Confirmed'] ?> },
+			{ x: 3, y: <?= $covid[247]['Confirmed'] ?> },
+			{ x: 4, y: <?= $covid[248]['Confirmed'] ?> },
+			{ x: 5, y: <?= $covid[249]['Confirmed'] ?> },
+			{ x: 6, y: <?= $covid[250]['Confirmed'] ?> },
+			{ x: 7, y: <?= $covid[251]['Confirmed'] ?> },
+			{ x: 8, y: <?= $covid[252]['Confirmed'] ?> },
+			{ x: 9, y: <?= $covid[253]['Confirmed'] ?> },
+			{ x: 10, y: <?= $covid[254]['Confirmed'] ?> },
+			{ x: 11, y: <?= $covid[255]['Confirmed'] ?> },
+			{ x: 12, y: <?= $covid[256]['Confirmed'] ?> },
+			{ x: 13, y: <?= $covid[257]['Confirmed'] ?> }
+		]
+	}]
+});
+chart.render();
+
+}
+</script>
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Covid 19 Updates</title>
@@ -36,6 +81,14 @@ $sehat = $row['Active'];
   <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   
 
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -51,7 +104,7 @@ $sehat = $row['Active'];
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="#" class="nav-link">Home</a>
       </li>
      
   </nav>
@@ -180,7 +233,9 @@ $sehat = $row['Active'];
           <!-- ./col -->
         </div>
         <!-- /.row -->
-       
+
+        <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -191,8 +246,23 @@ $sehat = $row['Active'];
 <!-- ./wrapper -->
 
 
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="plugins/chart.js/Chart.min.js"></script>
+
+
+<!-- OPTIONAL SCRIPTS -->
+<script src="plugins/chart.js/Chart.min.js"></script>
+<script src="dist/js/demo.js"></script>
 
 </body>
 </html>
